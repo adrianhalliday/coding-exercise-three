@@ -3,59 +3,124 @@ import { ref, onMounted } from 'vue';
 const { $gsap: gsap, $Draggable: Draggable } = useNuxtApp();
 
 onMounted(() => {
-  let startX, startY;
+  let startX, startY, currentX, currentY;
+
   const card = document.querySelector('.card');
 
   Draggable.create(card, {
     type: "x,y",
+    lockAxis: true,
     // @TODO: constrain to fake mobile container
     bounds: "body",
     inertia: true,
 
     onPress: function() {
-        startX = this.x;
-        startY = this.y;
+      startX = this.x;
+      startY = this.y;
     },
 
-    onDragEnd: function() {
-      hitTest(card)
-      gsap.to(this.target, {
-          x: startX,
-          y: startY,
-          duration: 0.5,
-          ease: "power2.out"
-      });
-    }
+    onClick: function() {
+      console.warn("Click!");
+    },
+
+    onDrag: function() {
+      if(this.isDragging && this.x !== startX) {
+        gsap.to(card, 1, {rotation: 0 + (this.x / 6)});
+      } else if(this.isDragging && this.y !== startY) {
+        gsap.to(card, 1, {scale: 1 + (this.y / 1000)});
+      }
+    },
+
+    onDragEnd: () => {
+      gsap.killTweensOf(card);
+      hitTest(card);
+    },
   });
+
+
+  const hitTest = (card) => {
+    const hitbox = card.querySelector('.hitbox');
+    const areas = [
+      {
+        name: 'top',
+        element: document.querySelector(".card--drop.top"),
+        endTransform: {
+          opacity: 0,
+          x: startX,
+          y: startY - (window.innerHeight/2),
+          scale: .3,
+          rotation: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        }
+      },
+      {
+        name: 'left',
+        element: document.querySelector(".card--drop.left"),
+        endTransform: {
+          opacity: 0,
+          x: startX - window.innerWidth,
+          y: startY,
+          scale: .4,
+          rotation: -40,
+          duration: 0.5,
+          ease: "power2.out",
+        }
+      },
+      {
+        name: 'right',
+        element: document.querySelector(".card--drop.right"),
+        endTransform: {
+          opacity: 0,
+          x: startX + window.innerWidth,
+          y: startY,
+          scale: .4,
+          rotation: +40,
+          duration: 0.5,
+          ease: "power2.out",
+        }
+      },
+      {
+        name: 'bottom',
+        element: document.querySelector(".card--drop.bottom"),
+        endTransform: {
+          opacity: 1,
+          x: startX,
+          y: (window.innerHeight/2)*.86,
+          scale: 1.28,
+          rotation: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        }
+      },
+      {
+        name: 'centre',
+        element: document.querySelector(".card--drop.centre"),
+        endTransform: {
+          opacity: 1,
+          x: startX,
+          y: startY + (window.innerWidth / 2),
+          scale: 1.3,
+          rotation: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        }
+      },
+    ];
+  
+    areas.some(({ name, element, endTransform }) => {
+      if (element && Draggable.hitTest(hitbox, element, 12)) {
+        console.warn(`You just hit ${name}`);
+        
+        // const area = areas.filter((area) => area.name === name)
+        gsap.to(card,endTransform)
+  
+        return true;
+      }
+    });
+  }
 });
 
-const hitTest = (card) => {
-  const areas = [
-    {
-      key: "top",
-      class: ".top",
-    },
-    {
-      key: "left",
-      class: ".left",
-    },
-    {
-      key: "right",
-      class: ".right",
-    },
-    {
-      key: "bottom",
-      class: ".bottom",
-    },
-  ]
-  
-  areas.forEach((area) => {
-    const hitbox = card.querySelector('.hitbox');
-    if( Draggable.hitTest(hitbox, document.querySelector(area.class), 12) ) {
-      window.alert(`You just hit the ${area.key}`)
-    }
-  })
-}
 </script>
 
 <template>
