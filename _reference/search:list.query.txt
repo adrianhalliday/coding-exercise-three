@@ -1,0 +1,11 @@
+https://content-youtube.googleapis.com/youtube/v3/search?q=gaming&topicId=%2Fm%2F0bzvm2&maxResults=25&pageToken=CBkQAA&part=snippet&key=AIzaSyBdhmTp7pz2DalMZ4imPdUx9Wm2RZfEBOQ
+
+
+https://developers.google.com/youtube/v3/docs/search/list
+
+q:gaming
+topicId: /m/0bzvm2
+maxResults: 25
+pageToken: CBkQAA
+part: snippet
+key: AIzaSyBdhmTp7pz2DalMZ4imPdUx9Wm2RZfEBOQ

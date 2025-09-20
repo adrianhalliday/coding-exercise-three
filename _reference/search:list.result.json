@@ -1,0 +1,863 @@
+{
+  "kind": "youtube#searchListResponse",
+  "etag": "3CZQ6pRPlySFZN7VniTEQH4myIk",
+  "nextPageToken": "CDIQAA",
+  "prevPageToken": "CBkQAQ",
+  "regionCode": "AU",
+  "pageInfo": {
+    "totalResults": 1000000,
+    "resultsPerPage": 25
+  },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "ZWEBIELHKa9L3Di_QQnkE4BfiqY",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "eAwebGPfme8"
+      },
+      "snippet": {
+        "publishedAt": "2024-08-25T03:20:00Z",
+        "channelId": "UCvqbdW__yBVjMvWIO3QVDSw",
+        "title": "Driving 😳 | Gaming zone | #car #shorts #ytshorts #challenge #funny #gaming #gameplay #games",
+        "description": "Driving | Gaming zone | #car #shorts #ytshorts #challenge #funny #gaming #gameplay #games #shortsfeed #trending ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/eAwebGPfme8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/eAwebGPfme8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/eAwebGPfme8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "DoonPaarth",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-08-25T03:20:00Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "rsaZtT_wQP1A8G7A64UhomOPV9Y",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "eMf_3A8_Ors"
+      },
+      "snippet": {
+        "publishedAt": "2025-07-27T18:36:28Z",
+        "channelId": "UCkvfpTpMHcUyRCavmK6zKbA",
+        "title": "My Gaming Setup for Travel 🎮📲",
+        "description": "The perfect gaming setup for travel: All you need is a PS5 DualSense, a phone, and a mount. Just pair the controller via Bluetooth ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/eMf_3A8_Ors/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/eMf_3A8_Ors/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/eMf_3A8_Ors/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Gleb POV",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-07-27T18:36:28Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "XSIDQWUB2E74VzgHeA_Lrkv8G_A",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "DtSrjGJk2ls"
+      },
+      "snippet": {
+        "publishedAt": "2025-08-30T00:54:53Z",
+        "channelId": "UCtMkStfDvWdbURYcfZReruQ",
+        "title": "Indian desi simulator 3d loading truck added #shorts #trending #gaming",
+        "description": "Indian desi simulator 3d loading truck added #shorts #trending #gaming.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/DtSrjGJk2ls/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/DtSrjGJk2ls/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/DtSrjGJk2ls/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "UDAY GAMING",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-08-30T00:54:53Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "J00h8ijfepQD8-d6wbd1TiM4Svw",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "Cd-mqx8gM4c"
+      },
+      "snippet": {
+        "publishedAt": "2025-06-06T17:50:37Z",
+        "channelId": "UCmzCfBzwAduyoKtvID4O55g",
+        "title": "Ist so ein Feature nützlich? 🤔 #hinkowicz #gamer #gaming #setup #keyboard #tastatur #bequiet",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/Cd-mqx8gM4c/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/Cd-mqx8gM4c/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/Cd-mqx8gM4c/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Hinkowicz",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-06-06T17:50:37Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "jl3r3IsNoRy-A4rVQH0WMv9CxP4",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "xipX799qv1s"
+      },
+      "snippet": {
+        "publishedAt": "2025-05-31T00:27:46Z",
+        "channelId": "UC2wKfjlioOCLP4xQMOWNcgg",
+        "title": "Typical Gamer vs Peterbot (Again!)",
+        "description": "Fortnite Chapter 6 Star Wars Season 3 gameplay with Typical Gamer! #Shorts #Fortnite #TypicalGamer #clips #FortniteItems ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/xipX799qv1s/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/xipX799qv1s/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/xipX799qv1s/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Typical Gamer",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-05-31T00:27:46Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "qCQwnmn1u5KH2mp8thKCQraxL74",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "x-xelO_xyfA"
+      },
+      "snippet": {
+        "publishedAt": "2025-01-02T03:44:42Z",
+        "channelId": "UChEH_eKDZrOJjhcdzYjI4jA",
+        "title": "2025 MIGHT be goated for gaming 😭🎮",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/x-xelO_xyfA/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/x-xelO_xyfA/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/x-xelO_xyfA/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "BucketJosh",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-01-02T03:44:42Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "6GctAcsIfPnrZvJjwGC-5TTDwkA",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "14-ZdMwVY4w"
+      },
+      "snippet": {
+        "publishedAt": "2024-02-23T22:00:00Z",
+        "channelId": "UCacsGRFWE5FO1aCzuvlkkaw",
+        "title": "Spider-Man VR SQUID GAME TIME #vr #virtualreality #spiderman #gaming",
+        "description": "Join this channel to get access to perks: https://www.youtube.com/channel/UCacsGRFWE5FO1aCzuvlkkaw/join.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/14-ZdMwVY4w/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/14-ZdMwVY4w/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/14-ZdMwVY4w/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Benbu",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-02-23T22:00:00Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "WQSHJ437tBGj4IuGk4ThvsrbdyI",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "11YVE6pvzw8"
+      },
+      "snippet": {
+        "publishedAt": "2025-07-07T21:37:38Z",
+        "channelId": "UCFmhLDjF1bB6-rbv9TBqeQg",
+        "title": "Fortnite Squid Game is Hilarious!",
+        "description": "NEW Brain Rot Squidgame update in Memes box pvp in Fortnite!! and XP is enabled! #fortnite #milo.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/11YVE6pvzw8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/11YVE6pvzw8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/11YVE6pvzw8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Milo",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-07-07T21:37:38Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "2jlCSS6pVWmo2xdOezRIOTXwTNk",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "03u5y-M8Db0"
+      },
+      "snippet": {
+        "publishedAt": "2025-08-24T03:39:45Z",
+        "channelId": "UCVMjCnAe3Ztjsakf-VZj-cQ",
+        "title": "Bravo 🥹 | Who&#39;s Your Daddy #justmaiko #twitchclips #gaming #funny",
+        "description": "Join The Shluv Fam! https://discord.shluv.com FOLLOW ME ON TWITCH: https://twitch.tv/justmaiko Follow My Socials: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/03u5y-M8Db0/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/03u5y-M8Db0/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/03u5y-M8Db0/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Justmaiko Gaming",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-08-24T03:39:45Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "U6HtElZ-Fq_JvWexBeoqc5nHvzM",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "mUN8QWc8INw"
+      },
+      "snippet": {
+        "publishedAt": "2024-12-08T10:20:00Z",
+        "channelId": "UCvTF6BPZlJydj4l-dXVAwIA",
+        "title": "Không thể tin được #bdngaming #lehoituyetob47",
+        "description": "Chúc mọi người có được trải nghiệm tốt nhất với BDN Gaming. Mọi người thấy hay thì like và share nhé. Nhớ để lại những thử ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/mUN8QWc8INw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/mUN8QWc8INw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/mUN8QWc8INw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "BDN Gaming",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-12-08T10:20:00Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "He77lE9kgBa-CQ9sfV-V7aDPGlY",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "8ZwhtDXhzUc"
+      },
+      "snippet": {
+        "publishedAt": "2025-03-08T16:45:33Z",
+        "channelId": "UCemhZ2At2lgifTJLClGCz9A",
+        "title": "I Played Fortnite Using ONLY TEMU Gaming Products",
+        "description": "I Played Fortnite Using ONLY TEMU Gaming Products SUBSCRIBE \u200b\u2060@RoyaltyGaming1 SUBSCRIBE To ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/8ZwhtDXhzUc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/8ZwhtDXhzUc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/8ZwhtDXhzUc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Royalty Gaming",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-03-08T16:45:33Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "wkmlzRUWL1RTJjlcB_pLyYhkDWU",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "lYkVHNKxoIU"
+      },
+      "snippet": {
+        "publishedAt": "2025-06-21T09:25:00Z",
+        "channelId": "UCoDxL9-ZzuYfsX2L1ffXo0Q",
+        "title": "gta 5 vs gta 6 graphics comparison🔥    #gta #gta5 #gta6 #gaming",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/lYkVHNKxoIU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/lYkVHNKxoIU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/lYkVHNKxoIU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "harsh gaming",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-06-21T09:25:00Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "5BxYMNu09XNK9hazbzX_l2qU3hg",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "OK1UEi7SOOQ"
+      },
+      "snippet": {
+        "publishedAt": "2025-03-04T12:00:36Z",
+        "channelId": "UC-uj7cMP9Ezji3MyNFmjahg",
+        "title": "Total Gaming’s Biggest Mistake 🤮",
+        "description": "How one mistake ruined Total Gaming's reputation. #Shorts #TotalGaming #Ajjubhai #GamingNews #FreeFire #FreeFireBan ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/OK1UEi7SOOQ/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/OK1UEi7SOOQ/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/OK1UEi7SOOQ/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Alighters",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-03-04T12:00:36Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "QrG1pnc3QvIqFZqQHuqGAjWY8k0",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "cMdSOURoEcA"
+      },
+      "snippet": {
+        "publishedAt": "2023-07-30T16:11:08Z",
+        "channelId": "UCotVQSJbd5dQmMVRO-EINXQ",
+        "title": "strong gaming trigger #gamingtrigger #freefire #pubgmobile  #gamers",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/cMdSOURoEcA/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/cMdSOURoEcA/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/cMdSOURoEcA/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Easy-To-Use Tech👽",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-07-30T16:11:08Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "c6Sqs7bKp3iLLSpEX9HjUFwsVC0",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "rRRmsSOV9A4"
+      },
+      "snippet": {
+        "publishedAt": "2025-08-21T04:38:11Z",
+        "channelId": "UCVMjCnAe3Ztjsakf-VZj-cQ",
+        "title": "Bro is not coming back 🥀 | Who&#39;s Your Daddy?! #justmaiko #twitchclips #gaming #funny",
+        "description": "Join The Shluv Fam! https://discord.shluv.com FOLLOW ME ON TWITCH: https://twitch.tv/justmaiko Follow My Socials: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/rRRmsSOV9A4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/rRRmsSOV9A4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/rRRmsSOV9A4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Justmaiko Gaming",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-08-21T04:38:11Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "TPNRBiVTfGoxfcG10uybnBXywqk",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "BsgQEBYVYgs"
+      },
+      "snippet": {
+        "publishedAt": "2023-10-12T22:00:12Z",
+        "channelId": "UCqg3BHb31w2h77vFuTFmp2w",
+        "title": "Why Ninja Stopped Playing With DrLupo!",
+        "description": "BE SURE TO LIKE, SUBSCRIBE, AND TURN ON NOTIFICATIONS!!! MY REACTS CHANNEL: ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/BsgQEBYVYgs/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/BsgQEBYVYgs/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/BsgQEBYVYgs/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "CouRage Gaming",
+        "liveBroadcastContent": "none",
+        "publishTime": "2023-10-12T22:00:12Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "Y_4VJZJnBQJhpShMv_mxsjkk1pU",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "8VoY370E9hk"
+      },
+      "snippet": {
+        "publishedAt": "2025-07-26T05:17:17Z",
+        "channelId": "UCMFDbdj3ECQOi4lWZmyvIPw",
+        "title": "Top 3 Funniest Horror Game Moments 🔥💀 (THE FIRST ONE SCREAM LIKE A 🦅)",
+        "description": "HorrorGame\u200b #FunnyMoments\u200b #Top3\u200b #GamingFails\u200b #ScaryButFunny\u200b #JumpscareFails\u200b #StreamerFails\u200b #MicPeaked\u200b ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/8VoY370E9hk/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/8VoY370E9hk/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/8VoY370E9hk/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Top3 Rankings",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-07-26T05:17:17Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "H1wsBpVoLwuLcepM-lwqEcflXMk",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "pbVKtejDrGI"
+      },
+      "snippet": {
+        "publishedAt": "2025-08-15T19:00:47Z",
+        "channelId": "UCj4hfQEWcGtF08SLEZCZc5Q",
+        "title": "Roblox Games Fighting Over Whos MOST Popular..",
+        "description": "CODE: Vindooly if you're not supporting any other creators! :) My Roblox Account: https://www.roblox.com/users/1521562782 My ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/pbVKtejDrGI/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/pbVKtejDrGI/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/pbVKtejDrGI/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Vindooly",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-08-15T19:00:47Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "lcv3fE-QqmnEV5coXgHABFsEeAI",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "0Te3amVy9lY"
+      },
+      "snippet": {
+        "publishedAt": "2025-04-17T08:00:01Z",
+        "channelId": "UCrddA2HWyVhVmU3X63oJMgg",
+        "title": "Age of Apes ads review new level: Ape domination #games #gaming #fortnite",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/0Te3amVy9lY/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/0Te3amVy9lY/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/0Te3amVy9lY/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "AOA Review",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-04-17T08:00:01Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "c4MB7nscaoC95fLfO8oVzuAvpLQ",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "3jZSSvg8rw4"
+      },
+      "snippet": {
+        "publishedAt": "2025-07-15T13:44:35Z",
+        "channelId": "UCI7nzC_wFmrAMbX9HLOH9Kw",
+        "title": "TECHNO GAMERZ YA KON SA DRAGON HA 🥶 #trending #technogamerz #shortfeed #youtubeshort #viral#shorts",
+        "description": "MIND CRACK WORK IN MINECRAFT @TechnoGamerzOfficial #ujjwal\u200b\u200b\u200b\u200b\u200b\u200b\u200b\u200b\u200b#technogamerz\u200b\u200b\u200b\u200b\u200b\u200b\u200b\u200b\u200b techno ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/3jZSSvg8rw4/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/3jZSSvg8rw4/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/3jZSSvg8rw4/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": " M7 ABDULLAH ",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-07-15T13:44:35Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "hPtUEIueD-HkgUYYZUyus1pzuwY",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "oiQR-YdqrQk"
+      },
+      "snippet": {
+        "publishedAt": "2025-06-13T21:32:27Z",
+        "channelId": "UCVAYy7_zddIx6USjXscV9Vg",
+        "title": "POV: Caseoh Jumps In Your Pool",
+        "description": "GAME = Waterpark Simulator FREE DEMO out on steam NOW!",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/oiQR-YdqrQk/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/oiQR-YdqrQk/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/oiQR-YdqrQk/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Caylus  ",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-06-13T21:32:27Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "-1PXgzuoNXtBapmPtz8wan3G39c",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "dB-tjpSetds"
+      },
+      "snippet": {
+        "publishedAt": "2025-07-03T12:30:35Z",
+        "channelId": "UCuwX9HYsUP6r-ko066k7Tbg",
+        "title": "GT 20 PRO 120 fps  one hand gameplay 🔥",
+        "description": "GT 20 PRO 120 fps one hand gameplay.",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/dB-tjpSetds/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/dB-tjpSetds/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/dB-tjpSetds/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "IMPOSSIBLE FF",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-07-03T12:30:35Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "A_oRCgQ-QSukkOzjsC_5X_WXAO0",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "EYc8tzg7nH8"
+      },
+      "snippet": {
+        "publishedAt": "2025-08-13T00:30:08Z",
+        "channelId": "UC1_z0T1a4lw5AI470lF98Vg",
+        "title": "IMPOSSIBLE 🍷 🗿 #freefire @thegsbboys",
+        "description": "freefire #freefirehighlights #shorts #thegsb FREE FIRE UID 1962119729 Facebook : GSB GAMING Instagram : THE GSB BOYS ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/EYc8tzg7nH8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/EYc8tzg7nH8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/EYc8tzg7nH8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "THE GSB",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-08-13T00:30:08Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "_Zk2aqsKlraBXTK1hshXumgfIjk",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "EAYfnuk2zGw"
+      },
+      "snippet": {
+        "publishedAt": "2024-07-10T17:47:28Z",
+        "channelId": "UC2wKfjlioOCLP4xQMOWNcgg",
+        "title": "I Found the *RAREST* Mythic in Fortnite!",
+        "description": "Fortnite Chapter 5 Season 3 gameplay with Typical Gamer! #Shorts #Fortnite #TypicalGamer #clips #FortniteItems #Glitch MY ...",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/EAYfnuk2zGw/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/EAYfnuk2zGw/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/EAYfnuk2zGw/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Typical Gamer",
+        "liveBroadcastContent": "none",
+        "publishTime": "2024-07-10T17:47:28Z"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "jGZk0dd8_cJe3x_U-o1nnMnC-Tw",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "9E8ZOWTGyR0"
+      },
+      "snippet": {
+        "publishedAt": "2025-03-13T18:00:08Z",
+        "channelId": "UCxfm6syLAmYDaLavp_VuzEw",
+        "title": "The BEST CO-OP Game Out NOW feat. @bakedbeettv",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/9E8ZOWTGyR0/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/9E8ZOWTGyR0/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/9E8ZOWTGyR0/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "Kaitiac",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-03-13T18:00:08Z"
+      }
+    }
+  ]
+}
