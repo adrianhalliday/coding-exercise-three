@@ -1,5 +1,9 @@
 <template>
 	<div class="footer">
-		Footer placeholder
 	</div>
 </template>
+
+<style lang="scss" scoped>
+.footer {
+}
+</style>

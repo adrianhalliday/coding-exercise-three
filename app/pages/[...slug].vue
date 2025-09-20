@@ -1,9 +1,5 @@
 <template>
-  <div class="">
-    <p>{{ $route.params.slug }}</p>
+  <div>
+    <CardStage />
   </div>
 </template>
-
-<style lang="scss" scoped>
-
-</style>

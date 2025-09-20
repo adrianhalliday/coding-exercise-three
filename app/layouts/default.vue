@@ -3,9 +3,9 @@
     <LayoutNotch />
     <LayoutStatusBar />
     <div class="l_app">
-      <AppNav />
+      <!-- <AppNav /> -->
       <slot />
-      <AppFooter />
+      <!-- <AppFooter /> -->
     </div>
   </div>
 </template>
@@ -14,7 +14,10 @@
 // Adapted from https://codepen.io/adielhercules/pen/dJJGBQ
 .l_app {
   padding-top: var(--d-notch-height);
-  position: relative;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
 
   &--container {
     position: relative;
