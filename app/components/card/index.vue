@@ -1,5 +1,11 @@
 <template>
   <div class="card">
+    <div class="inner">
+      <div class="top">Top</div>
+      <div class="left">Left</div>
+      <div class="right">Right</div>
+      <div class="bottom">Bottom</div>
+    </div>
     <div class="card--image">
       <NuxtImg src="/nuxt-icon.png" />
       <div class="hitbox"></div>
@@ -45,6 +51,25 @@
     font-size: 2rem;
     height: 4ch;
     background-color: #fff;
+  }
+
+  .inner {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    
+    > div {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
   }
 }
 </style>
