@@ -1,6 +1,6 @@
 <template>
-  <div class="card">
-    <div class="inner">
+  <div class="card" ref="root">
+    <div class="inner" ref="innerRef">
       <div class="top">Top</div>
       <div class="left">Left</div>
       <div class="right">Right</div>
@@ -14,11 +14,21 @@
   </div>
 </template>
 
+<script setup>
+import { ref } from 'vue';
+
+const root = ref(null);
+const innerRef = ref(null);
+
+defineExpose({root,innerRef});
+</script>
+
 <style lang="scss" scoped>
 .card {
   width: 80%;
   height: auto;
   position: absolute;
+  top: calc((var(--container-height) / 2) - 50%);
   top: 40%;
   left: 10%;
 
@@ -36,12 +46,11 @@
     }
 
     .hitbox {
-      width: 34%;
+      width: 30%;
       aspect-ratio: 1;
       position: absolute;
       bottom: 0;
-      left: 33%;
-      background-color: white;
+      left: 35%;
       border-radius: 50%;
     }
   }

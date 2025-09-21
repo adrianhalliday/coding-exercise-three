@@ -24,11 +24,11 @@
   
   align-content: center;
   height: 20px;
-  padding: 5px 20px 0px 20px;
+  padding: 10px 20px 0px 20px;
   padding-right: 12px;
   position: absolute;
   width: 100%;
-  z-index: 1;
+  z-index: 999;
   cursor: grab;
 
   &--left,

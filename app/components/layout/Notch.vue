@@ -16,6 +16,7 @@
   height: var(--d-notch-height, 30px);
   background-color: #1f1f1f;
   border-radius: 0px 0px 20px 20px;
+  z-index: 1000;
 }
 
 span {

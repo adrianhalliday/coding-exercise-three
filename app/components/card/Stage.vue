@@ -1,188 +1,249 @@
 <script setup>
-import { ref, onMounted, computed } from "vue";
-const { $gsap: gsap, $Draggable: Draggable } = useNuxtApp();
+import { ref, onMounted, onBeforeUnmount, nextTick } from "vue";
+const { $gsap, $Draggable } = useNuxtApp()
 
-onMounted(() => {
-  if (process.client) {
-    let startX, startY, currentX, currentY, containerWidth, containerHeight;
+let draggableInstance = null;
+let startX = 0, startY = 0;
+let inner;
+const cardRef = ref(null);
+const stage = ref(null);
+const topRef = ref(null);
+const leftRef = ref(null);
+const centreRef = ref(null);
+const rightRef = ref(null);
+const bottomRef = ref(null);
+const containerWidth = ref(0);
+const containerHeight = ref(0);
 
-    const card = document.querySelector(".card");
-    const inner = card.querySelector(".inner");
-    const stage = document.querySelector(".card--stage");
+const getAreas = () => {
+  return {
+    top:{
+      name: "top",
+      element: topRef.value,
+      innerOpacity: 1,
+      endTransform: {
+        opacity: 0,
+        x: startX,
+        y: startY - containerHeight.value / 2,
+        scale: 0.3,
+        rotation: 0,
+        duration: 0.5,
+        ease: "power2.out",
+      },
+    },
+    left:{
+      name: "left",
+      element: leftRef.value,
+      innerOpacity: 1,
+      endTransform: {
+        opacity: 0,
+        x: startX - containerWidth.value,
+        y: startY,
+        scale: 0.5,
+        rotation: -36,
+        duration: 0.7,
+        ease: "power2.out",
+      },
+    },
+    right:{
+      name: "right",
+      element: rightRef.value,
+      innerOpacity: 1,
+      endTransform: {
+        opacity: 0,
+        x: startX + containerWidth.value,
+        y: startY,
+        scale: 0.5,
+        rotation: +36,
+        duration: 0.7,
+        ease: "power2.out",
+      },
+    },
+    bottom:{
+      name: "bottom",
+      element: bottomRef.value,
+      innerOpacity: 1,
+      endTransform: {
+        opacity: 1,
+        x: startX,
+        y: (containerHeight.value / 2),
+        scale: 1.28,
+        rotation: 0,
+        duration: 0.5,
+        ease: "power2.out",
+      },
+    },
+    centre:{
+      name: "centre",
+      element: centreRef.value,
+      innerOpacity: 0,
+      endTransform: {
+        opacity: 1,
+        x: startX,
+        y: startY,
+        scale: 1,
+        rotation: 0,
+        duration: 0.5,
+        ease: "power2.out",
+      },
+    },
+  }
+};
 
-    const updateDimensions = () => {
-      containerWidth = stage.offsetWidth;
-      containerHeight = stage.offsetHeight;
+const updateDimensions = () => {
+  if (stage.value) {
+    containerWidth.value = stage.value.offsetWidth;
+    containerHeight.value = stage.value.offsetHeight;
+  }
+};
+
+const getAxis = (currentX, currentY) => {
+  if (currentX !== startX) return "x";
+  if (currentY !== startY) return "y";
+  return null;
+};
+
+const getDirection = (axis, currentX, currentY) => {
+  if (axis === "x") {
+    return currentX < startX ? "left" : "right";
+  } else if (axis === "y") {
+    return currentY < startY ? "top" : "bottom";
+  }
+  return null;
+};
+
+const handleDrag = (currentX, currentY) => {
+  const axis = getAxis(currentX, currentY);
+  const direction = getDirection(axis,currentX,currentY);
+
+  if (axis === "x") {
+    $gsap.to(cardRef.value.root, { rotation: currentX / 6, duration: 0.3 });
+
+    const opacity = Math.abs(currentX - startX) / (containerWidth.value / 2);
+    const element = inner?.querySelector(`.${direction}`);
+    if (element) {
+      $gsap.to(element, { opacity: Math.min(1, opacity), duration: 0.3 });
     }
-    
+  } else if (axis === "y") {
+    $gsap.to(cardRef.value.root, { scale: 1 + (currentY - startY) / 1000, duration: 0.3 });
+
+    const opacity = Math.abs(currentY - startY) / (containerHeight.value / 2);
+    const element = inner?.querySelector(`.${direction}`);
+    if (element) {
+      $gsap.to(element, { opacity: Math.min(1, opacity), duration: 0.3 });
+    }
+  }
+};
+
+const doHitTest = function(el) {
+  const hitbox = cardRef.value.root?.querySelector(".hitbox");
+  // console.log({
+  //   el: el,
+  //   hitbox,
+  //   cardRef: cardRef.value.root,
+  // })
+  const axis = getAxis(el.x, el.y);
+  const direction = getDirection(axis,el.x,el.y);
+
+  if (!hitbox) {
+    console.error("Hitbox not found!");
+    return;
+  }
+
+  const areas = getAreas();
+  const targetArea = areas[direction];
+  
+  if(targetArea) {
+    const hit = draggableInstance.hitTest(targetArea.element,hitbox, "-20%");
+
+    if(hit) {
+      console.warn(`You just hit ${targetArea.name}`);
+      $gsap.killTweensOf([cardRef.value.root, inner]);
+      $gsap.to(cardRef.value.root, targetArea.endTransform);
+      $gsap.to(inner.querySelectorAll("div"), {
+        duration: 0.5,
+        opacity: 0,
+        ease: "power2.out",
+      });
+    } else {
+      $gsap.killTweensOf([cardRef.value.root, inner]);
+      $gsap.to(cardRef.value.root, areas['centre'].endTransform);
+      $gsap.to(inner.querySelectorAll("div"), {
+        duration: 0.5,
+        opacity: 0,
+        ease: "power2.out",
+      });
+    }
+  } 
+};
+
+onMounted(async () => {
+  if ($gsap && !process.server) {
+    await nextTick()
+
+    if (!cardRef.value) {
+      console.error("refs are not yet mounted!");
+      return;
+    }
+
+    if (cardRef.value.root) {
+      inner = cardRef.value.innerRef;
+    }
+
+    const container = document.querySelector('.card--stage');
+    if (container) {
+      containerWidth.value = container.offsetWidth;
+      containerHeight.value = container.offsetHeight;
+    }
+
     updateDimensions();
     window.addEventListener('resize', updateDimensions);
 
-    Draggable.create(card, {
+    draggableInstance = $Draggable.create(cardRef.value.root, {
       type: "x,y",
       lockAxis: true,
-      // @TODO: constrain to fake mobile container
       bounds: "body",
       inertia: true,
 
-      onPress: function () {
+      onPress: function() {
         startX = this.x;
         startY = this.y;
       },
 
-      onClick: function () {
-        console.warn("Click!");
+      onClick: () => console.warn("Click!"),
+
+      onDrag: function() {
+        handleDrag(this.x, this.y);
       },
 
-      onDrag: function () {
-        currentX = this.x;
-        currentY = this.y;
-        const axis = computed(() => {
-          if (currentX !== startX) return "x";
-          if (currentY !== startY) return "y";
-        });
-        let directionClass;
-        switch (axis.value) {
-          case "x":
-            directionClass = currentX < 0 ? ".left" : ".right";
-            break;
-          case "y":
-            directionClass = currentY < 0 ? ".up" : ".down";
-            break;
-        }
+      onDragEnd: function() {
+        doHitTest(this);
+      }
+    })[0];
+  }
 
-        const maxDistanceX = containerWidth / 2;
-        const maxDistanceY = containerHeight / 2;
+});
 
-        if (this.isDragging && axis === "x") {
-          gsap.to(card, 1, { rotation: 0 + currentX / 6 });
-
-          const opacity = Math.abs(currentX) / maxDistanceX;
-          gsap.to(inner.querySelector(directionClass), 1, {
-            opacity: Math.min(1, opacity),
-          });
-        } else if (this.isDragging && currentY !== startY) {
-          gsap.to(card, 1, { scale: 1 + currentY / 1000 });
-
-          const opacity = Math.abs(currentY) / maxDistanceY;
-          gsap.to(inner.querySelector(directionClass), 1, {
-            opacity: Math.min(1, opacity),
-          });
-        }
-      },
-
-      onDragEnd: () => {
-        gsap.killTweensOf(card);
-        gsap.killTweensOf(inner);
-        hitTest(card);
-      },
-    });
-
-    const areas = [
-      {
-        name: "top",
-        element: document.querySelector(".card--drop.top"),
-        innerOpacity: 1,
-        endTransform: {
-          opacity: 0,
-          x: startX,
-          y: startY - containerHeight / 2,
-          scale: 0.3,
-          rotation: 0,
-          duration: 0.5,
-          ease: "power2.out",
-        },
-      },
-      {
-        name: "left",
-        element: document.querySelector(".card--drop.left"),
-        innerOpacity: 1,
-        endTransform: {
-          opacity: 0,
-          x: startX - containerWidth,
-          y: startY,
-          scale: 0.5,
-          rotation: -36,
-          duration: 0.7,
-          ease: "power2.out",
-        },
-      },
-      {
-        name: "right",
-        element: document.querySelector(".card--drop.right"),
-        innerOpacity: 1,
-        endTransform: {
-          opacity: 0,
-          x: startX + containerWidth,
-          y: startY,
-          scale: 0.5,
-          rotation: +36,
-          duration: 0.7,
-          ease: "power2.out",
-        },
-      },
-      {
-        name: "bottom",
-        element: document.querySelector(".card--drop.bottom"),
-        innerOpacity: 1,
-        endTransform: {
-          opacity: 1,
-          x: startX,
-          y: (containerHeight / 2) * 0.9,
-          scale: 1.28,
-          rotation: 0,
-          duration: 0.5,
-          ease: "power2.out",
-        },
-      },
-      {
-        name: "centre",
-        element: document.querySelector(".card--drop.centre"),
-        innerOpacity: 0,
-        endTransform: {
-          opacity: 1,
-          x: startX,
-          y: startY,
-          scale: 1,
-          rotation: 0,
-          duration: 0.5,
-          ease: "power2.out",
-        },
-      },
-    ];
-
-    const hitTest = (card) => {
-      const hitbox = card.querySelector(".hitbox");
-
-      areas.some(({ name, element, endTransform, innerOpacity }) => {
-        if (element && Draggable.hitTest(hitbox, element, 12)) {
-          console.warn(`You just hit ${name}`);
-
-          gsap.to(card, endTransform);
-          gsap.to(inner.querySelectorAll("div"), {
-            duration: 0.5,
-            opacity: innerOpacity,
-            ease: "power2.out",
-          });
-          return true;
-        }
-      });
-    };
+onBeforeUnmount(() => {
+  if (draggableInstance) {
+    draggableInstance.kill();
+  }
+  window.removeEventListener('resize', updateDimensions);
+  if (cardRef.value.root) {
+    $gsap.killTweensOf([cardRef.value.root, inner]);
   }
 });
 </script>
 
 <template>
   <div class="card--stage" ref="stage">
-    <div class="card--drop top"></div>
-    <div class="card--drop left"></div>
-    <div class="card--drop centre"></div>
-    <div class="card--drop right"></div>
-    <div class="card--drop bottom"></div>
+    <div class="card--drop--top" ref="topRef"></div>
+    <div class="card--drop--left" ref="leftRef"></div>
+    <div class="card--drop--centre" ref="centreRef"></div>
+    <div class="card--drop--right" ref="rightRef"></div>
+    <div class="card--drop--bottom" ref="bottomRef"></div>
 
-    
-    <Card ref="card" />
-    
+    <Card ref="cardRef" :style="{ '--container-height': containerHeight }" />
   </div>
 </template>
 
@@ -193,36 +254,37 @@ onMounted(() => {
     height: 100%;
     position: absolute;
     inset: 0;
-    background: lightgrey;
     display: grid;
-    grid-template-columns: 1fr 60% 1fr;
-    grid-template-rows: 1fr 50% 1fr;
+    grid-template-columns: 1fr 80% 1fr;
+    grid-template-rows: 2fr 60% 1fr;
     grid-template-areas:
       "left top right"
       "left centre right"
       "left bottom right";
+
+    z-index: 100;
   }
 
   &--drop {
-    &.top {
+    &--top {
       grid-area: top;
-      background-color: red;
+      border-bottom: 1px solid red;
     }
-    &.left {
+    &--left {
       grid-area: left;
-      background-color: blue;
+      border-right: 1px solid red;
+      
     }
-    &.centre {
+    &--centre {
       grid-area: centre;
-      background-color: cyan;
     }
-    &.right {
+    &--right {
       grid-area: right;
-      background-color: magenta;
+      border-left: 1px solid red;
     }
-    &.bottom {
+    &--bottom {
       grid-area: bottom;
-      background-color: yellow;
+      border-top: 1px solid red;
     }
   }
 }
