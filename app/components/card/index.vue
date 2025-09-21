@@ -3,16 +3,24 @@
     <div class="inner" ref="innerRef">
       <!-- @TODO: make action-specific overlays -->
       <div class="action-overlay discard">
-        <Icon name="material-symbols:delete-rounded" />
+        <ClientOnly>
+          <Icon name="material-symbols:delete-rounded" />
+        </ClientOnly>
       </div>
       <div class="action-overlay dislike">
-        <Icon name="material-symbols:thumb-down-rounded" />
+        <ClientOnly>
+          <Icon name="material-symbols:thumb-down-rounded" />
+        </ClientOnly>
       </div>
       <div class="action-overlay favourite">
-        <Icon name="material-symbols:favorite-rounded" />
+        <ClientOnly>
+          <Icon name="material-symbols:favorite-rounded" />
+        </ClientOnly>
       </div>
       <div class="action-overlay playlist">
-        <Icon name="material-symbols:playlist-add-rounded" />
+        <ClientOnly>
+          <Icon name="material-symbols:playlist-add-rounded" />
+        </ClientOnly>
       </div>
     </div>
     <div class="card--image">
@@ -22,7 +30,9 @@
       >
         {{ videoDuration }}
       </span>
-      <Icon name="material-symbols:smart-display" />
+      <ClientOnly>
+        <Icon name="material-symbols:smart-display" />
+      </ClientOnly>
       <NuxtImg :src="video.snippet.thumbnails.high.url || './assets/placeholder.webp'" />
       <div class="hitbox" ref="hitBox"></div>
     </div>
@@ -175,12 +185,17 @@ const handleDrag = (currentX, currentY) => {
   }
 };
 
+const handleAction = (targetArea) => {
+  // Do things here for each action type
+}
+
 const doHitTest = function(el) {
   const axis = getAxis(el.x, el.y);
   const action = getAction(axis,el.x,el.y);
 
   const areas = getAreas();
   const targetArea = areas[action];
+  console.log(targetArea)
   
   if(targetArea) {
     const hit = draggableInstance.hitTest(targetArea.element,hitBox.value, "20%");
@@ -194,6 +209,8 @@ const doHitTest = function(el) {
         opacity: 0,
         ease: "power2.out",
       });
+
+      handleAction(targetArea);
     } else {
       $gsap.killTweensOf([cardRef.value, innerRef.value]);
       // Reset to middle position if no hit

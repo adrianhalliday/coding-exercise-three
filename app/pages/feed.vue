@@ -16,7 +16,6 @@ const isLoading = ref(false)
 const nextPageToken = ref(null)
 
 const handleSearchResults = (response) => {
-  console.log(response)
   nextPageToken.value = response.nextPageToken
   videos.value = response.items
 }
@@ -36,8 +35,6 @@ onMounted(async () => {
     }
   }
 
-  // Call handleSearch and log the result
-  await handleSearch(query, null)
-  console.log(videos.value)
+  await handleSearch(query, null);
 })
 </script>
