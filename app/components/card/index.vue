@@ -95,7 +95,7 @@ const getAreas = () => {
         opacity: 1,
         x: startX,
         y: (props.containerHeight / 2),
-        scale: 1.28,
+        scale: 1.25,
         rotation: 0,
         duration: 0.5,
         ease: "power2.out",
@@ -243,6 +243,8 @@ onBeforeUnmount(() => {
   top: calc((var(--container-height) / 2) - 50%);
   top: 40%;
   left: 10%;
+  border-radius: 1rem;
+  overflow: hidden;
 
   &--image {
     width: 100%;

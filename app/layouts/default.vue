@@ -18,6 +18,7 @@
   width: 100%;
   height: 100%;
   inset: 0;
+  box-sizing: border-box;
 
   &--container {
     position: relative;
@@ -29,7 +30,7 @@
       margin: clamp(5px, 5vh, 40px) auto;
       width: 360px;
       height: 780px;
-      background-image: linear-gradient(60deg, #7371ee 1%, #a1d9d6 100%);
+      background-image: linear-gradient(60deg, #1d1d20 1%, #3e4140 100%);
       border-radius: 30px;
       box-shadow:
         0px 0px 0px 11px #1f1f1f,

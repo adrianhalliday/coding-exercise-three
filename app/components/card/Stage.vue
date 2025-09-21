@@ -68,22 +68,22 @@ onBeforeUnmount(() => {
   &--drop {
     &--top {
       grid-area: top;
-      border-bottom: 1px solid red;
+      // border-bottom: 1px solid red;
     }
     &--left {
       grid-area: left;
-      border-right: 1px solid red;
+      // border-right: 1px solid red;
     }
     &--centre {
       grid-area: centre;
     }
     &--right {
       grid-area: right;
-      border-left: 1px solid red;
+      // border-left: 1px solid red;
     }
     &--bottom {
       grid-area: bottom;
-      border-top: 1px solid red;
+      // border-top: 1px solid red;
     }
   }
 }
