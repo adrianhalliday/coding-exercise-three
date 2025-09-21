@@ -49,7 +49,9 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount, nextTick } from "vue";
-const { $gsap, $Draggable } = useNuxtApp()
+const { $gsap, $Draggable } = useNuxtApp();
+const userData = useUserData();
+
 const props = defineProps([
   'index',
   'video',
@@ -71,7 +73,7 @@ const hitBox = ref(null);
 const isLoadingDuration = ref(true);
 const videoDuration = ref(null);
 
-const getAreas = () => {
+const getActions = () => {
   return {
     discard:{
       name: "discard",
@@ -152,7 +154,7 @@ const getAxis = (currentX, currentY) => {
   return null;
 };
 
-const getAction = (axis, currentX, currentY) => {
+const determineAction = (axis, currentX, currentY) => {
   if (axis === "x") {
     return currentX < startX ? "dislike" : "favourite";
   } else if (axis === "y") {
@@ -163,7 +165,7 @@ const getAction = (axis, currentX, currentY) => {
 
 const handleDrag = (currentX, currentY) => {
   const axis = getAxis(currentX, currentY);
-  const action = getAction(axis,currentX,currentY);
+  const action = determineAction(axis,currentX,currentY);
 
   if (axis === "x") {
     $gsap.to(cardRef.value, { rotation: currentX / 6, duration: 0.3 });
@@ -185,36 +187,50 @@ const handleDrag = (currentX, currentY) => {
   }
 };
 
-const handleAction = (targetArea) => {
-  // Do things here for each action type
+const handleAction = (targetAction) => {
+  switch(targetAction.name) {
+    case 'discard':
+      // Action here to remove video from search results array
+      // Not required as we're not properly storing search results or paging at this stage
+      break;
+    case 'dislike':
+    case 'favourite':
+    case 'playlist':
+      // Dislike is placeholder for exclusion from search results
+      // @TODO - add logic to search to exclude these IDs
+      props.video?.id?.videoId && userData.add(props.video.id.videoId,targetAction.name);
+      break;
+  }
 }
 
 const doHitTest = function(el) {
   const axis = getAxis(el.x, el.y);
-  const action = getAction(axis,el.x,el.y);
+  const action = determineAction(axis,el.x,el.y);
 
-  const areas = getAreas();
-  const targetArea = areas[action];
-  console.log(targetArea)
+  const actions = getActions();
+  const targetAction = actions[action];
   
-  if(targetArea) {
-    const hit = draggableInstance.hitTest(targetArea.element,hitBox.value, "20%");
+  if(targetAction) {
+    const hit = draggableInstance.hitTest(targetAction.element,hitBox.value, "20%");
 
     if(hit) {
       $gsap.killTweensOf([cardRef.value, innerRef.value]);
       // Tween to final position based on selected direction
-      $gsap.to(cardRef.value, targetArea.endTransform);
+      $gsap.to(cardRef.value, targetAction.endTransform);
       $gsap.to(innerRef.value.querySelectorAll("div"), {
         duration: 0.5,
         opacity: 0,
         ease: "power2.out",
       });
 
-      handleAction(targetArea);
+      handleAction(targetAction);
+      if (draggableInstance) {
+        draggableInstance.kill();
+      }
     } else {
       $gsap.killTweensOf([cardRef.value, innerRef.value]);
       // Reset to middle position if no hit
-      $gsap.to(cardRef.value, areas['centre'].endTransform);
+      $gsap.to(cardRef.value, actions['centre'].endTransform);
       $gsap.to(innerRef.value.querySelectorAll("div"), {
         duration: 0.5,
         opacity: 0,
@@ -264,6 +280,7 @@ onMounted(async () => {
       lockAxis: true,
       trigger: cardRef.value,
       // @TODO: Finalise bounds relative to mobile viewport
+      // for better experience on other viewports
       bounds: "body",
       inertia: true,
 

@@ -1,32 +1,60 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export const useUserData = defineStore('userData', {
   state: () => ({
     userDataKey: null,
-    favourites: [],
+    favourite: [],
     playlist: [],
-    ignore: [],
+    dislike: [],
   }),
   actions: {
     setUserDataKey(ID) {
       this.userDataKey = ID;
     },
-    addFavourite(ID) {
-      if(this.favourites.find(ID)) return;
-      this.favourites.push(ID);
+    add(ID,type) {
+      if(type == 'favourite' && this.favourite.includes(ID)) return;
+
+      this[type].push(ID);
+      
+      const localData = localStorage.getItem(`${this.userDataKey}-${type}`);
+      const parsedLocalData = localData ? JSON.parse(localData) : [];
+
+      localStorage.setItem(
+        `${this.userDataKey}-${type}`,
+        JSON.stringify([...parsedLocalData, ID])
+      );
     },
-    addToPlaylist(ID) {
-      this.playlist.push(ID);
+    set(list,type) {
+      this[type] = [...list];
     },
-    addIgnore(ID) {
-      this.ignore.push(ID);
+    loadUserKey() {
+      const localUserDataKey = localStorage.getItem('localUserDataKey');
+
+      if(!this.userDataKey) {
+        const UUID = localUserDataKey ?? uuidv4();
+        this.setUserDataKey(UUID);
+      } else if(!localUserDataKey) {
+        localStorage.setItem('localUserDataKey',this.userDataKey);
+      }
     },
-    setFavourites(list) {
-      this.favourites = [...list];
-    },
-    setToPlaylist(list) {
-      this.playlist = [...list];
-    },
-    setIgnores(list) {
-      this.ignore = [...list];
-    },
+    loadFromStorage() {
+      this.loadUserKey();
+
+      if (!this.userDataKey) return;
+      
+      const favourite = localStorage.getItem(`${this.userDataKey}-favourite`);
+      const playlist = localStorage.getItem(`${this.userDataKey}-playlist`);
+      const dislike = localStorage.getItem(`${this.userDataKey}-dislike`);
+      
+      if (favourite) {
+        this.favourite = JSON.parse(favourite);
+      }
+      if (playlist) {
+        this.playlist = JSON.parse(playlist);
+      }
+      if (dislike) {
+        this.dislike = JSON.parse(dislike);
+      }
+    }
   }
 });
