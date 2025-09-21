@@ -2,10 +2,18 @@
   <div class="card" ref="cardRef">
     <div class="inner" ref="innerRef">
       <!-- @TODO: make action-specific overlays -->
-      <div class="action-overlay discard">Discard</div>
-      <div class="action-overlay dislike">Dislike</div>
-      <div class="action-overlay favourite">Favourite</div>
-      <div class="action-overlay playlist">Playlist</div>
+      <div class="action-overlay discard">
+        <Icon name="material-symbols:delete-rounded" />
+      </div>
+      <div class="action-overlay dislike">
+        <Icon name="material-symbols:thumb-down-rounded" />
+      </div>
+      <div class="action-overlay favourite">
+        <Icon name="material-symbols:favorite-rounded" />
+      </div>
+      <div class="action-overlay playlist">
+        <Icon name="material-symbols:playlist-add-rounded" />
+      </div>
     </div>
     <div class="card--image">
       <NuxtImg src="/nuxt-icon.png" />
@@ -132,17 +140,17 @@ const handleDrag = (currentX, currentY) => {
   if (axis === "x") {
     $gsap.to(cardRef.value, { rotation: currentX / 6, duration: 0.3 });
 
-    const opacity = Math.abs(currentX - startX) / (props.containerWidth / 2);
     const element = innerRef.value.querySelector(`.${action}`);
     if (element) {
+      const opacity = Math.abs(currentX - startX) / (props.containerWidth / 2);
       $gsap.to(element, { opacity: Math.min(1, opacity), duration: 0.3 });
     }
   } else if (axis === "y") {
-    $gsap.to(cardRef.value, { scale: 1 + (currentY - startY) / 1000, duration: 0.3 });
+    $gsap.to(cardRef.value, { scale: 1 + (currentY - startY) / 500, duration: 0.3 });
 
-    const opacity = Math.abs(currentY - startY) / (props.containerHeight / 2);
     const element = innerRef.value.querySelector(`.${action}`);
     if (element) {
+      const opacity = Math.abs(currentY - startY) / (props.containerHeight / 3);
       $gsap.to(element, { opacity: Math.min(1, opacity), duration: 0.3 });
     }
   }
@@ -268,7 +276,12 @@ onBeforeUnmount(() => {
     height: 4ch;
     background-color: #fff;
   }
-
+  .iconify {
+    display: block;
+        width: 40px;
+        height: 40px;
+        color: var(--c-white);
+      }
   .inner {
     position: absolute;
     inset: 0;
@@ -282,6 +295,8 @@ onBeforeUnmount(() => {
       align-items: center;
       justify-content: center;
       color: var(--c-white);
+
+      
 
       &.discard {
         background-color: var(--c-action-discard);

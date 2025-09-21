@@ -16,5 +16,11 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     '@nuxt/test-utils',
     '@nuxt/content'
-  ]
+  ],
+
+  icon: {
+    serverBundle: {
+      collections: ['material-symbols']
+    }
+  }
 })
