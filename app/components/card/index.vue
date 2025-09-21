@@ -16,10 +16,24 @@
       </div>
     </div>
     <div class="card--image">
-      <NuxtImg src="/nuxt-icon.png" />
+      <span 
+        v-if="videoDuration" 
+        class="video--duration"
+      >
+        {{ videoDuration }}
+      </span>
+      <Icon name="material-symbols:smart-display" />
+      <NuxtImg :src="video.snippet.thumbnails.high.url || './assets/placeholder.webp'" />
       <div class="hitbox" ref="hitBox"></div>
     </div>
-    <div class="card--details"></div>
+    <div class="card--details">
+      <h3 class="video--title">
+        {{ video.snippet.title }}
+      </h3>
+
+      <p>{{ video.snippet.description }}</p>
+
+    </div>
   </div>
 </template>
 
@@ -27,6 +41,8 @@
 import { ref, onMounted, onBeforeUnmount, nextTick } from "vue";
 const { $gsap, $Draggable } = useNuxtApp()
 const props = defineProps([
+  'index',
+  'video',
   'stage',
   'discard',
   'dislike',
@@ -42,6 +58,8 @@ let startX = 0, startY = 0;
 const cardRef = ref(null);
 const innerRef = ref(null);
 const hitBox = ref(null);
+const isLoadingDuration = ref(true);
+const videoDuration = ref(null);
 
 const getAreas = () => {
   return {
@@ -94,7 +112,7 @@ const getAreas = () => {
       endTransform: {
         opacity: 1,
         x: startX,
-        y: (props.containerHeight / 2),
+        y: (props.containerHeight / 2) + (props.containerWidth *.47),
         scale: 1.25,
         rotation: 0,
         duration: 0.5,
@@ -146,7 +164,8 @@ const handleDrag = (currentX, currentY) => {
       $gsap.to(element, { opacity: Math.min(1, opacity), duration: 0.3 });
     }
   } else if (axis === "y") {
-    $gsap.to(cardRef.value, { scale: 1 + (currentY - startY) / 500, duration: 0.3 });
+    const multiplier = (currentY - startY > 0) ? 1200 : 500;
+    $gsap.to(cardRef.value, { scale: 1 + (currentY - startY) / multiplier, duration: 0.3 });
 
     const element = innerRef.value.querySelector(`.${action}`);
     if (element) {
@@ -167,7 +186,7 @@ const doHitTest = function(el) {
     const hit = draggableInstance.hitTest(targetArea.element,hitBox.value, "20%");
 
     if(hit) {
-      $gsap.killTweensOf([cardRef.value, innerRef]);
+      $gsap.killTweensOf([cardRef.value, innerRef.value]);
       // Tween to final position based on selected direction
       $gsap.to(cardRef.value, targetArea.endTransform);
       $gsap.to(innerRef.value.querySelectorAll("div"), {
@@ -176,7 +195,7 @@ const doHitTest = function(el) {
         ease: "power2.out",
       });
     } else {
-      $gsap.killTweensOf([cardRef.value, innerRef]);
+      $gsap.killTweensOf([cardRef.value, innerRef.value]);
       // Reset to middle position if no hit
       $gsap.to(cardRef.value, areas['centre'].endTransform);
       $gsap.to(innerRef.value.querySelectorAll("div"), {
@@ -188,12 +207,38 @@ const doHitTest = function(el) {
   } 
 };
 
+const parseDuration = (duration) => {
+  const regex = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?$/;
+  const matches = duration.match(regex);
+
+  if(!matches) return null;
+
+  const h = parseInt(matches[1]) || false;
+  const m = parseInt(matches[2]) || 0;
+  const s = parseFloat(matches[3]) || 0;
+
+  return h ? `${h}h ${m}m` : `${m}m ${s}s`;
+}
+
 onMounted(async () => {
+  const { getVideoDuration } = useVideoSearch();
+
+  const handleGetVideoDuration = async (id) => {
+    try {
+      const response = await getVideoDuration(id);
+      videoDuration.value = parseDuration(response);
+    } catch (error) {
+      console.error('Duration lookup failed:', error);
+    } finally {
+      isLoadingDuration.value = false;
+    }
+  }
+  handleGetVideoDuration(props.video.id.videoId);
+
   if ($gsap && !process.server) {
     await nextTick()
 
     if (!cardRef.value) {
-      console.error("refs are not yet mounted!");
       return;
     }
 
@@ -229,7 +274,7 @@ onBeforeUnmount(() => {
     draggableInstance.kill();
   }
   if (cardRef.value) {
-    $gsap.killTweensOf([cardRef.value, innerRef]);
+    $gsap.killTweensOf([cardRef.value, innerRef.value]);
   }
 });
 
@@ -238,27 +283,68 @@ onBeforeUnmount(() => {
 <style lang="scss" scoped>
 .card {
   width: 80%;
-  height: auto;
+  aspect-ratio: 4/5;
   position: absolute;
-  top: calc((var(--container-height) / 2) - 50%);
-  top: 40%;
+  top: calc((var(--container-height) / 2) * 1px);
+  margin-top: -50%;
   left: 10%;
   border-radius: 1rem;
   overflow: hidden;
-
+  background-image: linear-gradient(60deg, #1d1d20 1%, #3e4140 100%);
+  border: 1px solid #ffffff01;
+  box-sizing: border-box;
+  
   &--image {
     width: 100%;
-    aspect-ratio: 16/9;
-    background-color: darkgreen;
+    aspect-ratio: 4/3;
+    background-color: black;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
+    z-index: 1;
+
+    .video--duration {
+      font-size: .7rem;
+      color: var(--c-white-20);
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 3;
+      font-weight: 700;
+      padding: .7rem;
+    }
+    
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(60deg, #1d1d20 1%, #3e4140 100%);
+      mix-blend-mode: multiply;
+      z-index: 2;
+      opacity: .6;
+    }
+
+    .iconify {
+      position: absolute;
+      inset: 50%;
+      display: block;
+      width: 60px;
+      height: 60px;
+      margin: -20px 0 0 -20px;
+      color: var(--c-white);
+      z-index: 3;
+    }
 
     img {
       position: absolute;
       inset: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       object-position: center;
     }
@@ -274,20 +360,48 @@ onBeforeUnmount(() => {
 
   &--details {
     width: 100%;
-    font-size: 2rem;
-    height: 4ch;
-    background-color: #fff;
+    font-size: 1rem;
+    aspect-ratio: 4/2;
+    color: var(--c-white);
+    padding: .8rem .6rem .8rem .8rem;
+    box-sizing: border-box;
+
+    h3, p {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    h3 {
+      font-weight: 500;
+      line-height: 1.2;
+      margin-block-start: 0;
+      -webkit-line-clamp: 3;
+    }
+    
+    p {
+      margin-block-start: 0;
+      font-size: .8rem;
+      line-height: 1.3;
+      color: var(--c-white-20);
+      -webkit-line-clamp: 2;
+    }
   }
-  .iconify {
-    display: block;
-        width: 40px;
-        height: 40px;
-        color: var(--c-white);
-      }
+  
   .inner {
     position: absolute;
     inset: 0;
     z-index: 10;
+    user-select: none;
+
+    .iconify {
+      display: block;
+      width: 5rem;
+      height: 5rem;
+      color: var(--c-white);
+      user-select: none;
+    }
     
     .action-overlay {
       position: absolute;
@@ -297,8 +411,6 @@ onBeforeUnmount(() => {
       align-items: center;
       justify-content: center;
       color: var(--c-white);
-
-      
 
       &.discard {
         background-color: var(--c-action-discard);

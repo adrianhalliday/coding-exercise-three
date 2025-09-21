@@ -19,6 +19,8 @@
   height: 100%;
   inset: 0;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 
   &--container {
     position: relative;

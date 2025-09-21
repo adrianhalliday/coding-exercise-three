@@ -1,5 +1,9 @@
 <template>
-  <div class="card--stage" ref="stage">
+  <div 
+    v-if="!isLoading"
+    class="card--stage" 
+    ref="stage"
+  >
     <div class="card--drop--top" ref="discard"></div>
     <div class="card--drop--left" ref="dislike"></div>
     <div class="card--drop--centre" ref="centreRef"></div>
@@ -7,6 +11,9 @@
     <div class="card--drop--bottom" ref="bottomRef"></div>
 
     <Card
+      v-for="(video, index) in videos"
+      :key="index"
+      :video="video"
       :style="{ '--container-height': containerHeight }"
       :stage="stage"
       :discard="discard"
@@ -17,11 +24,23 @@
       :containerHeight="containerHeight"
       :containerWidth="containerWidth"
     />
+    
   </div>
+  <div class="loading" v-else />
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
+const props = defineProps({
+  videos: {
+    type: Array,
+    default: () => []
+  },
+  isLoading: {
+    type: Boolean,
+    default: false
+  }
+});
 
 const stage = ref(null);
 const discard = ref(null);
@@ -33,12 +52,16 @@ const containerWidth = ref(0);
 const containerHeight = ref(0);
 
 const updateDimensions = () => {
-  containerWidth.value = stage.value.offsetWidth;
-  containerHeight.value = stage.value.offsetHeight;
+  if (stage.value) {
+    containerWidth.value = stage.value.offsetWidth;
+    containerHeight.value = stage.value.offsetHeight;
+  }
 };
 
 onMounted(async () => {
-  updateDimensions();
+  if (stage.value) {
+    updateDimensions();
+  }
   window.addEventListener("resize", updateDimensions);
 });
 

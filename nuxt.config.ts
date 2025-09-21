@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
+  devtools: { enabled: false },
 
   css: [
     '~/assets/css/main.scss',
@@ -22,5 +22,29 @@ export default defineNuxtConfig({
     serverBundle: {
       collections: ['material-symbols']
     }
+  },
+
+  runtimeConfig: {
+    // Private keys (only available on server-side)
+    youtubeApiKey: process.env.YOUTUBE_API_KEY,
+  },
+
+  fonts: {
+    families: [
+      {
+        name: 'DM Sans',
+        provider: 'google',
+        weights: ['400', '500', '700'],
+        styles: ['normal', 'italic'],
+        subsets: ['latin', 'latin-ext']
+      },
+      {
+        name: 'Monoton',
+        provider: 'google',
+        weights: ['400'],
+        styles: ['normal'],
+        subsets: ['latin']
+      },
+    ]
   }
 })
