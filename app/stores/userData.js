@@ -11,9 +11,7 @@ export const useUserData = defineStore('userData', {
     setUserDataKey(ID) {
       this.userDataKey = ID;
     },
-    add(ID,type) {
-      if(type == 'favourite' && this.favourite.includes(ID)) return;
-
+    addID(ID,type) {
       this[type].push(ID);
       
       const localData = localStorage.getItem(`${this.userDataKey}-${type}`);
@@ -22,6 +20,21 @@ export const useUserData = defineStore('userData', {
       localStorage.setItem(
         `${this.userDataKey}-${type}`,
         JSON.stringify([...parsedLocalData, ID])
+      );
+    },
+    addVideo(video,type) {
+      const ID = video.id.videoId;
+
+      if (type === 'favourite' && this.favourite.some(item => item.id?.videoId === ID)) return;
+
+      this[type].push(video);
+      
+      const localData = localStorage.getItem(`${this.userDataKey}-${type}`);
+      const parsedLocalData = localData ? JSON.parse(localData) : [];
+
+      localStorage.setItem(
+        `${this.userDataKey}-${type}`,
+        JSON.stringify([...parsedLocalData, video])
       );
     },
     set(list,type) {

@@ -51,6 +51,7 @@
 import { ref, onMounted, onBeforeUnmount, nextTick } from "vue";
 const { $gsap, $Draggable } = useNuxtApp();
 const userData = useUserData();
+const videoData = useVideoData();
 
 const props = defineProps([
   'index',
@@ -191,14 +192,16 @@ const handleAction = (targetAction) => {
   switch(targetAction.name) {
     case 'discard':
       // Action here to remove video from search results array
-      // Not required as we're not properly storing search results or paging at this stage
+      // Not required as I have not implemented search results caching in store or paging
       break;
-    case 'dislike':
-    case 'favourite':
-    case 'playlist':
+      case 'dislike':
       // Dislike is placeholder for exclusion from search results
       // @TODO - add logic to search to exclude these IDs
-      props.video?.id?.videoId && userData.add(props.video.id.videoId,targetAction.name);
+      props.video?.id?.videoId && userData.addID(props.video.id.videoId,targetAction.name);
+      break;
+    case 'favourite':
+    case 'playlist':
+      props.video?.id?.videoId && userData.addVideo(props.video,targetAction.name);
       break;
   }
 }
@@ -254,26 +257,25 @@ const parseDuration = (duration) => {
 }
 
 onMounted(async () => {
-  const { getVideoDuration } = useVideoSearch();
+  // Disabled function to get video duration and display in top right of card
+  // Because of constant hot refreshes I used up my YouTube API quota in a couple of hours!!!
 
-  const handleGetVideoDuration = async (id) => {
-    try {
-      const response = await getVideoDuration(id);
-      videoDuration.value = parseDuration(response);
-    } catch (error) {
-      console.error('Duration lookup failed:', error);
-    } finally {
-      isLoadingDuration.value = false;
-    }
-  }
-  handleGetVideoDuration(props.video.id.videoId);
+  // const { getVideoDuration } = useVideoSearch();
 
-  if ($gsap && !process.server) {
-    await nextTick()
+  // const handleGetVideoDuration = async (id) => {
+  //   try {
+  //     const response = await getVideoDuration(id);
+  //     videoDuration.value = parseDuration(response);
+  //   } catch (error) {
+  //     console.error('Duration lookup failed:', error);
+  //   } finally {
+  //     isLoadingDuration.value = false;
+  //   }
+  // }
+  // handleGetVideoDuration(props.video.id.videoId);
 
-    if (!cardRef.value) {
-      return;
-    }
+  if ($gsap && !process.server && cardRef.value) {
+    await nextTick();
 
     draggableInstance = $Draggable.create(cardRef.value, {
       type: "x,y",
@@ -289,7 +291,15 @@ onMounted(async () => {
         startY = this.y;
       },
 
-      onClick: () => console.warn("Click!"),
+      onClick: function() {
+        videoData.setVideo(props.video);
+        navigateTo({
+          path: '/player',
+          query: {
+            id: props.video.id.videoId
+          }
+        });
+      },
 
       onDrag: function() {
         handleDrag(this.x, this.y);
@@ -311,10 +321,9 @@ onBeforeUnmount(() => {
     $gsap.killTweensOf([cardRef.value, innerRef.value]);
   }
 });
-
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .card {
   width: 80%;
   aspect-ratio: 4/5;
@@ -369,7 +378,7 @@ onBeforeUnmount(() => {
       display: block;
       width: 60px;
       height: 60px;
-      margin: -20px 0 0 -20px;
+      margin: -30px 0 0 -30px;
       color: var(--c-white);
       z-index: 3;
     }

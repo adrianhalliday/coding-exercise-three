@@ -78,8 +78,8 @@ onBeforeUnmount(() => {
     position: absolute;
     inset: 0;
     display: grid;
-    grid-template-columns: 1fr 80% 1fr;
-    grid-template-rows: 2fr 60% 1fr;
+    grid-template-columns: 1fr 90% 1fr;
+    grid-template-rows: 1fr 66% 1fr;
     grid-template-areas:
       "left top right"
       "left centre right"

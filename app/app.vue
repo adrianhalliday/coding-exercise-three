@@ -7,6 +7,7 @@
 <script setup>
 import { onMounted } from 'vue';
 const userData = useUserData();
+const videoData = useVideoData();
 
 onMounted(async() => {
   if (!process.client) return;

@@ -5,6 +5,9 @@ export default defineEventHandler(async (event) => {
   
   try {
     const response = await $fetch('https://www.googleapis.com/youtube/v3/videos', {
+      headers: {
+        'Referer': 'http://localhost:3000'
+      },
       params: {
         part: 'snippet,contentDetails',
         id,

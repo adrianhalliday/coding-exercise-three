@@ -19,3 +19,72 @@ body {
   width: 100%;
   height: 100%;
 }
+
+
+/* Page Transitions */
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.2s ease-in-out;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+/* Custom transition for Feed to Player */
+.feed-to-player-enter-active,
+.feed-to-player-leave-active {
+  transition: opacity 0.6s cubic-bezier(0.65,0.05,0.36,1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.feed-to-player-enter-from {
+  opacity: 0;
+}
+
+.feed-to-player-enter-to {
+  opacity: 1;
+}
+
+.feed-to-player-leave-from {
+  opacity: 1;
+}
+
+.feed-to-player-leave-to {
+  opacity: 0;
+}
+
+/* Custom transition for Player to Page */
+.player-to-page-enter-active,
+.player-to-page-leave-active {
+  transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.player-to-page-enter-from {
+  opacity: 0;
+}
+
+.player-to-page-enter-to {
+  opacity: 1;
+}
+
+.player-to-page-leave-from {
+  opacity: 1;
+}
+
+.player-to-page-leave-to {
+  opacity: 0;
+}

@@ -26,7 +26,6 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    // Private keys (only available on server-side)
     youtubeApiKey: process.env.YOUTUBE_API_KEY,
   },
 
