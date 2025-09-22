@@ -4,10 +4,9 @@
     <LayoutStatusBar />
     <div class="l_app">
       <AppNav />
-      <!-- <slot /> -->
-      <!-- :transition="route.meta.transition || { name: 'page', mode: 'out-in' }" -->
+      
       <NuxtPage class="l_app--inner" />
-      <!-- <AppFooter /> -->
+      <!-- <NuxtPage class="l_app--inner" :transition="route.meta.transition || { name: 'page', mode: 'out-in' }" /> -->
     </div>
   </div>
 </template>

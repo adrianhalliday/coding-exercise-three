@@ -33,7 +33,7 @@
 	flex-direction: column;
 	align-items: center;
 	padding-top: calc(var(--d-notch-height) + 1rem);
-	z-index: 800;
+	z-index: 1000;
 	
 	&--container {
 		position: relative;
@@ -56,13 +56,16 @@
 			width: 100%;
 			height: 100%;
 			background-image: linear-gradient(60deg, #1d1d205c 1%, #3e414062 100%);
+			mix-blend-mode: lighten;
 		}
 	}
 	
 	&--link {
+		position: relative;
 		padding: .6rem 2rem;
 		border-radius: 2.6rem;
 		background-image: linear-gradient(60deg, #85858e2a 1%, #c9dad32e 100%);
+		z-index: 5;
 	}
 	
 	.iconify {

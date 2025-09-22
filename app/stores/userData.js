@@ -31,6 +31,18 @@ export const useUserData = defineStore('userData', {
       
       const localData = localStorage.getItem(`${this.userDataKey}-${type}`);
       const parsedLocalData = localData ? JSON.parse(localData) : [];
+      const trimmedLocalData = parsedLocalData.filter(v => v !== video);
+      
+      localStorage.setItem(
+        `${this.userDataKey}-${type}`,
+        JSON.stringify(trimmedLocalData)
+      );
+    },
+    removeVideo(video,type) {
+      this[type] = this[type].filter(v => v !== video);
+      
+      const localData = localStorage.getItem(`${this.userDataKey}-${type}`);
+      const parsedLocalData = localData ? JSON.parse(localData) : [];
 
       localStorage.setItem(
         `${this.userDataKey}-${type}`,
