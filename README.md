@@ -11,6 +11,8 @@ Demonstrating your eye for design coupled with your coding skills won't be overl
 
 # TUBR : Browse YouTube with a Tinder-style interface
 
+https://coding-exercise-three.vercel.app/
+
 Based on Nuxt Minimal Starter from [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ## Contents
