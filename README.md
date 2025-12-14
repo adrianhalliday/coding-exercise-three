@@ -1,3 +1,14 @@
+# Activity three Brief
+
+This is the black belt task. The one where you pull out all the stops and push as hard
+as you can to build something awesome.
+Choose your preferred JS framework and create an app which allows users to search and play YouTube videos via the YouTube API. Anything goes here. Use whatever JS based technology you're comfortable with.
+You also need to enable users to manage local storage and curate a list of selected or favourite YouTube videos so they can come back to those clips and watch them again.
+We'll be looking specifically at your approach to a full project in JS that makes use of a Restful API. Although this task is dev focused and a chance for us to assess your
+application of your chosen tools, we value beautiful and slick interfaces.
+
+Demonstrating your eye for design coupled with your coding skills won't be overlooked. You may want to read that last sentence again.
+
 # TUBR : Browse YouTube with a Tinder-style interface
 
 Based on Nuxt Minimal Starter from [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
